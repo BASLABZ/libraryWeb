@@ -122,18 +122,51 @@
 							      <button class="btn waves-effect waves-light" id='get_days'  type="button" name="action">Submit
 								    <i class="material-icons right">send</i>
 								  </button>
+								  <div class="row">
+								<div class="col s4">
+									<div class="card">
+                                    <div class="card-move-up waves-effect waves-block waves-light">
+                                        <div class="move-up cyan darken-1">
+                                            <div>
+                                            	<label style="color: white;"> VALUE OF SUBTOTAL </label> 	
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="card-content">   
+                        			 <div class="row">
+									    <form class="col s12">
+									      <div class="row">
+									        <div class="input-field">
+									          Rp<i class="material-icons prefix"></i>
+									          <input id="subtotal" type="text" class="validate" value="500000">
+									          <label for="icon_prefix">Subtotal</label>
+									        </div>
+									        <div class="input-field">
+									          Rp<i class="material-icons prefix"></i>
+									          <input id="total" type="tel" class="validate" value="0">
+									          <label for="icon_telephone">TOTAL</label>
+									        </div>
+									      </div>
+									    </form>
+									  </div>
+                                    </div>
+                                </div>
+								</div>
+								<div class="col s4">
+									<div class="card-panel teal ">
+							          <span class="white-text">
+							          <div class='days'>0
+										
+								      	</div>	
+							          </span>
+							          <input type="text" id="juml">
+							        </div>
+								</div>
+							</div>
 							</form>
-						    <div class="row">
-						      <div class="col s12 m2">
-						        <div class="card-panel teal">
-						          <span class="white-text">
-						          <div class='days'>0
-									<div>
-							      	</div>	
-						          </span>
-						        </div>
-						      </div>
-						    </div>
+							
+						   
 					    </li>
 					  </ul>
 				      </div>
@@ -197,6 +230,8 @@ Date.daysBetween = function( date1, date2 ) {
   return Math.round(difference_ms/one_day); 
 }
 $('#get_days').click(function(){
+	var subtotal = document.getElementById("subtotal").value;
+
 	d1 = new Date($("#start_date").val());
 	console.log(d1);
 	d2 = new Date($("#end_date").val());
@@ -205,7 +240,11 @@ $('#get_days').click(function(){
 		console.log(hasil);
 		$('.days').text('MAAF TANGGAL ANDA TIDAK VALID');
 	}else {
-		$('.days').text(Date.daysBetween(d1, d2)); 
+		
+		var jumlah = $('.days').text(Date.daysBetween(d1, d2)); 
+		 document.getElementById("juml").innerHTML =  jumlah;
+		 
+		
 	}
 	
 }); 
