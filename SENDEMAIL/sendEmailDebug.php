@@ -1,9 +1,12 @@
+
 <?php
 /**
  * This example shows settings to use when sending via Google's Gmail servers.
  */
 //SMTP needs accurate times, and the PHP time zone MUST be set
 //This should be done in your php.ini, but this is how to do it if you don't have access to that
+include 'config/config.php';
+$id = $_GET['id'];
 date_default_timezone_set('Etc/UTC');
 require 'PHPMailerAutoload.php';
 
@@ -36,16 +39,31 @@ $mail->Password = "W0r3&Tr0j43";
 //Set who the message is to be sent from
 $mail->setFrom('ahmad.bastian8@gmail.com', 'judul dari x');
 //Set an alternative reply-to address
-$mail->addReplyTo('nsjm.cs@gmail.com', 'First Last');
+$namaPenerimaEmail  = "tutorialsuper.cs@gmail.com";
+// $mail->addReplyTo('tutorialsuper.cs@gmail.com', 'First Last');
 //Set who the message is to be sent to
-$mail->addAddress('nsjm.cs@gmail.com', 'John Doe');
+$mail->addAddress('tutorialsuper.cs@gmail.com', 'John Doe');
 //Set the subject line
-$mail->Subject = 'PHPMailer GMail SMTP test';
-//Read an HTML message body from an external file, convert referenced images to embedded,
-//convert HTML into a basic plain-text alternative body
-$mail->msgHTML(file_get_contents('phpcurl.php'), dirname(__FILE__));
+// $mail->Subject = 'PHPMailer GMail SMTP test';
+// //Read an HTML message body from an external file, convert referenced images to embedded,
+// //convert HTML into a basic plain-text alternative body
+// $mail->msgHTML(file_get_contents('phpcurl.php'), dirname(__FILE__));
 //Replace the plain text body with one created manually
-$mail->AltBody = 'This is a plain-text message body';
+// $mail->AltBody = 'This is a plain-text message body';
+
+function get_include_contents($filename) {
+
+    if (is_file($filename)) {
+        ob_start();
+        include $filename;
+        return ob_get_clean();
+    }
+    return false;
+}
+$mail->IsHTML(true);    // set email format to HTML
+$mail->Subject = "You have an event today";
+$mail->Body = get_include_contents('content\invoice.php'); // HTML -> PHP!
+$mail->addAttachment("file/file.txt", "File.txt");
 //Attach an image file
 $mail->addAttachment('imgTes/amanda.jpg');
 //send the message, check for errors

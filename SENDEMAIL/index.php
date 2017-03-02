@@ -1,3 +1,6 @@
+<?php
+    include 'config/config.php';
+ ?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -5,6 +8,11 @@
     <title>Library For Send Email</title>
   </head>
   <body>
-        <a href="sendEmailDebug.php">Send Email Now</a>
+        <?php
+            $id = 8;
+            $ency = base64_encode($id);
+            echo "<a href='sendEmailDebug.php?id=".$ency."'>Send Email Now</a>";
+         ?>
+
   </body>
 </html>
