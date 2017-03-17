@@ -25,6 +25,7 @@ function loadProvinsi(id) {
       success:function(response){
         $(id).html('');
         province = '';
+
             var result = jQuery.parseJSON(JSON.stringify(response['rajaongkir']['results']));
             $.each(result, function(i,n){
                 province = '<option value="'+n['province_id']+'">'+n['province']+'</option>';
@@ -51,13 +52,34 @@ function loadCity(idprovince,id) {
                     city = '<option value="'+ns['city_id']+'">'+ns['city_name']+'</option>';
                     city = city + '';
                     $(id).append(city);
-                    console.log($(id).append(city))
+                    
                 });
         },
         error:function () {
             $(id).html('ERROR');
         }
 
+    });
+}
+
+// hitung harga
+
+function CekHarga() {
+    
+    var origin      = $('#oricity').val();
+    var destination = $('#descity').val();
+    var weight      = $('#berat').val();
+    var courier     = $('#service').val();
+    
+    $.ajax({
+        url:'process.php?act=cost',
+        data:{origin:origin,destination:destination,weight:weight,courier:courier},
+        success:function (response) {
+
+            $('#resultsbox').html(response);
+        },error:function () {
+            $('#resultsbox').html('ERROR');
+        }
     });
 }
 
