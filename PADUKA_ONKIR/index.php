@@ -74,7 +74,7 @@
 		<hr>
 		<table class="twelve columns">
 			<thead>
-				
+				<th>Aksi</th>
 				<th>Service</th>
 				<th>Nama Paket</th>
 				<th>Lama Kirim</th>
@@ -82,7 +82,7 @@
 			</thead>	
 			<tbody id="resultsbox"></tbody>
 		</table>
-	<!-- 	<div id="loading"></div> -->
+		<!-- <div id="loading"></div> -->
 	</div>
 	</div>
 

@@ -65,12 +65,12 @@ function loadCity(idprovince,id) {
 // hitung harga
 
 function CekHarga() {
-    
+
     var origin      = $('#oricity').val();
     var destination = $('#descity').val();
     var weight      = $('#berat').val();
     var courier     = $('#service').val();
-    
+
     $.ajax({
         url:'process.php?act=cost',
         data:{origin:origin,destination:destination,weight:weight,courier:courier},
@@ -81,5 +81,9 @@ function CekHarga() {
             $('#resultsbox').html('ERROR');
         }
     });
+}
+
+function totalOngkir() {
+    alert('tes');
 }
 

@@ -30,7 +30,9 @@
 							foreach($rc->cost as $rcc):
 								echo "		
 											<tr>
-												
+												<td>
+													<input onclick='totalOngkir()' type='radio' id='pilihpaket' name='pilihpaket' value=".$rcc->value.">
+												</td>
 												<td>".$rc->service."</td>
 												<td>".$rc->description."</td>
 												<td>".$rcc->etd."</td>
